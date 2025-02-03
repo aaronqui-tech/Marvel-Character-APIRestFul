@@ -9,12 +9,10 @@ package org.aaronquitech.marvel.rest.constant;
 public abstract class RoutesConstant {
     /** Ruta base del proyecto */
     public static final String BASE_PATH = "${api.uri.basepath}";
-    /** Ruta para API */
+    /** Ruta para API - Characters. */
     public static final String DOMAIN_CHARACTER_PATH = "${api.uri.domain.character}";
-    /** Ruta para API */
+    /** Ruta para API - Character ID. */
     public static final String DOMAIN_CHARACTER_ID_PATH = "${api.uri.domain.character.id}";
-    /** Ruta API externa Lista de Personajes. */
-    public static final String EXTERNAL_API_CHARACTERS = "${marvel.path.character}";
-    /** Ruta API externa Personaje por id. */
-    public static final String EXTERNAL_API_CHARACTER_ID = "${marvel.path.character.id}";
+    /** Ruta para API - Log. */
+    public static final String DOMAIN_CHARACTER_LOG_PATH = "${api.uri.domain.character.log}";
 }

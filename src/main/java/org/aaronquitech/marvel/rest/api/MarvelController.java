@@ -1,6 +1,7 @@
 package org.aaronquitech.marvel.rest.api;
 
 import org.aaronquitech.marvel.rest.constant.RoutesConstant;
+import org.aaronquitech.marvel.rest.model.LogResponse;
 import org.aaronquitech.marvel.rest.service.MarvelService;
 import lombok.RequiredArgsConstructor;
 import org.aaronquitech.project.dependecy.model.MarvelResponse;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Controlador de personajes Marvel
@@ -38,11 +41,21 @@ public class MarvelController {
     /**
      * Metodo para recuperar un personaje
      *
-     * @param id
+     * @param id de personaje Marvel
      * @return
      */
     @GetMapping(path = RoutesConstant.DOMAIN_CHARACTER_ID_PATH)
     public MarvelResponse characterRetrieve(@PathVariable String id){
         return marvelService.charactersRetrieve(id);
+    }
+
+    /**
+     * Metodo para recuperar bitacora
+     *
+     * @return
+     */
+    @GetMapping(path = RoutesConstant.DOMAIN_CHARACTER_LOG_PATH)
+    public List<LogResponse> characterLog(){
+        return marvelService.characterLogRetrieve();
     }
 }
