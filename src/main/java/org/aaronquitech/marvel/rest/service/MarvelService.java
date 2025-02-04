@@ -1,9 +1,9 @@
 package org.aaronquitech.marvel.rest.service;
 
-import org.aaronquitech.marvel.rest.model.LogResponse;
+import org.aaronquitech.marvel.rest.model.CharacterLogResponse;
+import org.aaronquitech.marvel.rest.model.GlobalResponse;
 import org.aaronquitech.project.dependecy.model.MarvelResponse;
-
-import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Service Marvel Character
@@ -31,7 +31,7 @@ public interface MarvelService {
     /**
      * Obtiene los datos registrados en Bitacora
      *
-     * @return {@link List<LogResponse>}
+     * @return {@link CharacterLogResponse}
      */
-    List<LogResponse> characterLogRetrieve();
+    GlobalResponse<CharacterLogResponse> characterLogRetrieve(Pageable pageable);
 }

@@ -1,6 +1,8 @@
 package org.aaronquitech.marvel.rest.repository;
 
 import org.aaronquitech.marvel.rest.entity.CharacterLogEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,5 +16,6 @@ import java.util.Optional;
  */
 public interface CharacterLogRepository extends JpaRepository<CharacterLogEntity, Long> {
 
-    Optional<List<CharacterLogEntity>> findAllByOrderByDatetimeDesc();
+    /** Recupera todos los registros de bitacora. */
+    Page<CharacterLogEntity> findAllByOrderByDatetimeDesc(Pageable pageable);
 }

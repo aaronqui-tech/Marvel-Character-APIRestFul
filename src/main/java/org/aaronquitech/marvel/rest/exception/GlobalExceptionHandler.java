@@ -6,6 +6,7 @@ import org.aaronquitech.marvel.rest.enums.ErrorMessageEnum;
 import org.aaronquitech.marvel.rest.model.ApiError;
 import org.aaronquitech.marvel.rest.util.Utilities;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -59,15 +60,31 @@ public class GlobalExceptionHandler {
      *     NotDataFoundException}.
      */
     @ExceptionHandler(NotDataFoundException.class)
-    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ApiError handleNotDataFoundException(NotDataFoundException ex, WebRequest request) {
         String path = this.util.sanitizeString(((ServletWebRequest)request).getRequest().getRequestURI());
         ApiError apiError =
                 ApiError.builder()
-                        .status(HttpStatus.OK.toString().substring(0,3))
+                        .status(HttpStatus.NOT_FOUND.toString().substring(0,3))
                         .exception("data_not_found")
                         .code(ex.getCode())
                         .message(ex.getMessage())
+                        .path(path)
+                        .build();
+        log.debug(apiError.toString());
+        return apiError;
+    }
+
+    @ExceptionHandler(HttpMessageNotWritableException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiError httpMessageNotWritableException(HttpMessageNotWritableException ex, WebRequest request) {
+        String path = this.util.sanitizeString(((ServletWebRequest)request).getRequest().getRequestURI());
+        ApiError apiError =
+                ApiError.builder()
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR.toString().substring(0,3))
+                        .exception(HttpStatus.INTERNAL_SERVER_ERROR.toString().substring(4).toLowerCase())
+                        .code(ErrorMessageEnum.SERIALIZABLE_JSON_ERROR.getCode())
+                        .message(ErrorMessageEnum.SERIALIZABLE_JSON_ERROR.getMessage())
                         .path(path)
                         .build();
         log.debug(apiError.toString());

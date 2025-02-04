@@ -11,7 +11,8 @@ import lombok.Getter;
 @Getter
 public enum ErrorMessageEnum {
     UNKNOWN_ERROR("MCS-E100", "Ocurrió error desconocido."),
-    NOT_DATA_FOUND("MCS-E101", "No se encontraron datos.");
+    NOT_DATA_FOUND("MCS-E101", "No se encontraron datos."),
+    SERIALIZABLE_JSON_ERROR("MCS-E102", "Error al intentar serializar JSON");
 
     /** Codigo del error */
     private final String code;

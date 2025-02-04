@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@EnableEncryptableProperties
-public class TestMarvelApplication {
+public class MarvelCharacterApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(TestMarvelApplication.class, args);
+		SpringApplication.run(MarvelCharacterApplication.class, args);
 	}
 }

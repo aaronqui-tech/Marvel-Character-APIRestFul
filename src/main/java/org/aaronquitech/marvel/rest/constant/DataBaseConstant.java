@@ -15,4 +15,7 @@ public abstract class DataBaseConstant {
     public static final String COLUMN_API_ENDPOINT = "apiendpoint";
     /** Columna fecha y hora. */
     public static final String COLUMN_DATE_TIME = "datetime";
+
+    /** Constructor privado de la clase DataBaseConstant. */
+    private DataBaseConstant() {}
 }

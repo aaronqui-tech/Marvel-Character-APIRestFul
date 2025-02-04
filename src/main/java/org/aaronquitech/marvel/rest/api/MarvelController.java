@@ -1,17 +1,18 @@
 package org.aaronquitech.marvel.rest.api;
 
 import org.aaronquitech.marvel.rest.constant.RoutesConstant;
-import org.aaronquitech.marvel.rest.model.LogResponse;
+import org.aaronquitech.marvel.rest.model.CharacterLogResponse;
+import org.aaronquitech.marvel.rest.model.GlobalResponse;
 import org.aaronquitech.marvel.rest.service.MarvelService;
 import lombok.RequiredArgsConstructor;
 import org.aaronquitech.project.dependecy.model.MarvelResponse;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Controlador de personajes Marvel
@@ -55,7 +56,7 @@ public class MarvelController {
      * @return
      */
     @GetMapping(path = RoutesConstant.DOMAIN_CHARACTER_LOG_PATH)
-    public List<LogResponse> characterLog(){
-        return marvelService.characterLogRetrieve();
+    public GlobalResponse<CharacterLogResponse> characterLog(@PageableDefault() Pageable pageable ){
+        return marvelService.characterLogRetrieve(pageable);
     }
 }

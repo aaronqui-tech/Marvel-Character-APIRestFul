@@ -15,4 +15,7 @@ public abstract class RoutesConstant {
     public static final String DOMAIN_CHARACTER_ID_PATH = "${api.uri.domain.character.id}";
     /** Ruta para API - Log. */
     public static final String DOMAIN_CHARACTER_LOG_PATH = "${api.uri.domain.character.log}";
+
+    /** Constructor privado de la clase RoutesConstant. */
+    private RoutesConstant() {}
 }
